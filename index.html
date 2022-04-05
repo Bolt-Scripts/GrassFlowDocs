@@ -568,6 +568,9 @@ Discord: <a href="https://discord.com/invite/CwvB2PDcqC" target="_blank">discord
 
 
 <script>
+
+
+
 var coll = document.getElementsByClassName("collapsible");
 
 for (let i = 0; i < coll.length; i++) {
@@ -625,6 +628,20 @@ function HandleAnchor(e){
 }
 
 
+
+if(window.location.host != "boltmanguy.github.io"){
+	//check if the page is available on the web and use that version if it is
+	var request = new XMLHttpRequest(); 
+	let liveURL = "https://boltmanguy.github.io/GrassFlowDocs/";
+	request.open("GET", liveURL);
+	request.onreadystatechange = function() { 
+		if (request.readyState === 4 && request.status === 200) {	
+			console.log("available");	
+			window.location.href = liveURL;
+		}
+	};
+	request.send(null); // Send the request now
+}
 
 </script>
 
