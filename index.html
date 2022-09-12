@@ -259,6 +259,8 @@ NEW: Mesh based grass
 Just as it sounds, you can now use custom 3D meshes to represent grass instead of just quads or the tessellation method.
 To use it, change the "Render Mode" on your grass material to "Mesh", and then assign a custom mesh in your GrassFlowRenderer component. Done!
 Tip: This mode is much less sensitive to grassPerTri, so you should probably leave it at 1.
+NOTE: Wind strength is taken from the red channel of the vertex colors, so you can paint your meshes manually if you desire.
+	  Otherwise it is calculated automatically based on the height.
 Pros:
   -Doesn't require the geometry shader stage, and will work on Metal/MacOs (probably, untested as of now)
   -Can draw much more intricate shapes and styles of grass
