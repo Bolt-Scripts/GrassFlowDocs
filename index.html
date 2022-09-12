@@ -257,7 +257,7 @@ GrassFlow 2 provides three main types of grass shader to choose from depending o
 
 NEW: Mesh based grass
 Just as it sounds, you can now use custom 3D meshes to represent grass instead of just quads or the tessellation method.
-To use it, change the "Render Mode" on your grass material to "Mesh", and then assign a custom mesh in the GrassFlowRenderer. Done!
+To use it, change the "Render Mode" on your grass material to "Mesh", and then assign a custom mesh in your GrassFlowRenderer component. Done!
 Tip: This mode is much less sensitive to grassPerTri, so you should probably leave it at 1.
 Pros:
   -Doesn't require the geometry shader stage, and will work on Metal/MacOs (probably, untested as of now)
@@ -425,6 +425,7 @@ It's also import to keep in mind that the performance impact of these settings i
 E.g. Higher resolutions will have to fill more pixels to draw the grass, which means per pixel features will be run more often and hit performance harder.
 NOTE: Normal mapping pretty much requires per-pixel lights because otherwise you won't see the detailed shading.
 NOTE V2: per-pixel lighting is only really noticeable with normal mapping on or using smooth custom meshes.
+NOTE V3: If using additional lights with shadows in URP, you'll probably want to enable per-pixel lights since otherwise shadows will look weird, only being handled per-vertex.
 
 Do not worry about the following if you are using URP or the deferred shader.
 But if you're using forward rendering, Grassflow technically supports all standard Unity lights, but will require the material feature "Foward Add" to receive additional lighting in the Standard pipeline.
