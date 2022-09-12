@@ -105,9 +105,9 @@ a:active {color: #0005ff;}
 
 <body class="bg">
 
-<h2 class="toc">GrassFlow V2.02</h2>
+<h2 class="toc">GrassFlow V2.1</h2>
 <pre>
-Thanks for using GrassFlow, hopefully you'll find everything you need here and create some sweet looking interactive grasses.
+Thanks for usin GrassFlow, hopefully you'll find everything you need here and create some sweet looking interactive grasses.
 This asset was inspired by the game Flower. I wanted to create a similarly impressive grass simulation, and so, here we are.
 If you like it, please feel free to leave a review, or post pictures in the discord.
 
@@ -253,8 +253,20 @@ This works by painting onto the parameter map, so make sure you have painting se
 <button id="shaders" type="button" class="collapsible">2. Choosing a Shader</button>
 <div class="content">
 <pre>
-GrassFlow 2 provides two main types of grass shader to choose from depending on the style and tradeoffs you're willing to make.
+GrassFlow 2 provides three main types of grass shader to choose from depending on the style and tradeoffs you're willing to make.
 
+NEW: Mesh based grass
+Just as it sounds, you can now use custom 3D meshes to represent grass instead of just quads or the tessellation method.
+To use it, change the "Render Mode" on your grass material to "Mesh", and then assign a custom mesh in the GrassFlowRenderer. Done!
+Tip: This mode is much less sensitive to grassPerTri, so you should probably leave it at 1.
+Pros:
+  -Doesn't require the geometry shader stage, and will work on Metal/MacOs (probably, untested as of now)
+  -Can draw much more intricate shapes and styles of grass
+Cons:
+  -Less performant per-polygon rendered. In my test it was maybe about 1ms per 8M triangles.
+  -Slightly less memory efficient
+  
+  
 Specifically new to GF2, is a completely new grass shader with a unique use of tessellation to create dense flowing fields at large scales.
 If it suits your style, then this new shader should be a great boon. So here's a list to help you decide if it's right for you.
 Pros: 
@@ -402,6 +414,18 @@ Read the tooltip on MeshLodChunks for more info.
 	<button id="lighting" type="button" class="sub collapsible">C. Lighting</button>
 	<div class="content">
 	<pre>
+
+
+Some new lighting features include:
+  -per-pixel lights
+  -specular highlights
+  -normal mapping
+These settings all have a slight performance impact, with normal mapping being the most costly.
+It's also import to keep in mind that the performance impact of these settings is directly correlated to the pixel fill-rate.
+E.g. Higher resolutions will have to fill more pixels to draw the grass, which means per pixel features will be run more often and hit performance harder.
+NOTE: Normal mapping pretty much requires per-pixel lights because otherwise you won't see the detailed shading.
+NOTE V2: per-pixel lighting is only really noticeable with normal mapping on or using smooth custom meshes.
+
 Do not worry about the following if you are using URP or the deferred shader.
 But if you're using forward rendering, Grassflow technically supports all standard Unity lights, but will require the material feature "Foward Add" to receive additional lighting in the Standard pipeline.
 About Forward Add:
@@ -431,7 +455,7 @@ About Forward Add:
 -This is because the GPU still has to do a lot of calculations to even get to the point to reject the blade of grass, not to mention other rendering overhead.
 -It still has a sizeable performance boost for not rendering large portions of grass this way but it's mostly for aesthetic use only.
 -Using the tessellated version of the shader is much more performant when painting density as terrain can be culled *before* tessellating.
--IMPORTANT: For mesh based use, you can use the "Bake Density to Mesh" button to create a version of the base mesh that only has triangles where you have painted grass density.
+-IMPORTANT: For mesh based use, you can use the "Discard Empty Triangles" setting to create a version of the base mesh that only has triangles where you have painted grass density.
 -You could further improve efficiency by creating your own custom mesh that only has triangles where you want grass, and use regional triangle density of that mesh to control grass density.
 -You can also use discardEmptyChunks ONLY in terrain mode to potentially optimize terrain better. See more in the section on LOD performance.
 
