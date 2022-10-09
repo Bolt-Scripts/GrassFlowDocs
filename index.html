@@ -161,12 +161,7 @@ Wanted to get this out up front so if nothing else you hopefully know this.
 It should be fairly simple to get rolling just by following/copying the examples from the included example scenes and adjusting slightly as needed.
 But there's a lot of in-depth information in these docs that dive deeper into performance and other details.
 
-
-IMPORTANT: If using mesh mode, it's important (albeit not strictly necessary) the import scale is such that the scale in the editor is 1,1,1
-The scale of the transform effects the scale of the grass, so if your mesh imports with a small scale and to compensate you scale the transform up by like say, 8000...
-You're going to have a bad time.
-
-ALSO IMPORTANT: In mesh mode, grass is rendered per-triangle of the source mesh, so for uniform looking grass make sure the mesh has fairly uniform triangles.
+IMPORTANT: In mesh mode, grass is rendered per-triangle of the source mesh, so for uniform looking grass make sure the mesh has fairly uniform triangles.
 Or, if you want denser patches of grass in areas, the most efficient way to do that is to make the source mesh triangles denser in that area.
 This can also be accomplished by using the density channel of the parameter map, but this is much less effecient.
 You can use the normalize mesh density setting in the GrassFlowRenderer component to attempt to make your triangles more uniform automatically, but this will add processing time.
@@ -496,9 +491,7 @@ Grass not properly attached?
 
 Can't see any grass?
   -There could be a few reasons for this.
-  -Firstly I'll put this here again: if using mesh mode, it's important the import scale is such that the scale in the editor is 1,1,1
-  -The scale of the transform effects the scale of the grassblades.
-  -Secondly it's possible your LOD settings are bad, make sure LodParams.X is high enough and that LodParams.Y and Z are set to something that makes sense as well.
+  -It's possible your LOD settings are bad, make sure LodParams.X is high enough and that LodParams.Y and Z are set to something that makes sense as well.
   -Make sure maxRenderDist is set high enough as well.
   -All else fails make sure you try refreshing, some things don't update unless you refresh or it could be stuck and just need a reset.
 
