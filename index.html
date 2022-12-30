@@ -105,7 +105,7 @@ a:active {color: #0005ff;}
 
 <body class="bg">
 
-<h2 class="toc">GrassFlow V2.13</h2>
+<h2 class="toc">GrassFlow V2.15</h2>
 <pre>
 Thanks for usin GrassFlow, hopefully you'll find everything you need here and create some sweet looking interactive grasses.
 This asset was inspired by the game Flower. I wanted to create a similarly impressive grass simulation, and so, here we are.
@@ -505,6 +505,9 @@ Map painting isn't working?
 Weird behaviour with multiple grass meshes?
   -If using the same grass material for multiple meshes, it can sometimes be necessary to enable the "Use Material Instance" setting so that some settings on the material can be set per mesh.
   -Probably only necessary if using different painting maps on each different grass mesh.
+  
+Grass showing at edges of terrain even when grass is erased?
+  -Make sure your parameter maps have their wrap mode set to "clamp"
   
 
 Feel free to contact me with questions or issues.
