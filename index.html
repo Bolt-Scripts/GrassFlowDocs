@@ -1,4 +1,4 @@
-
+  
 
 
 
@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="imgs/icon_64.png">
+<link rel="icon" href="https://i.imgur.com/H0oTiQk.png">
 <title>GrassFlow Documentation</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -201,7 +201,7 @@ The hotkeys should be the same as the default terrain ones.
 In order to paint, you'll need to set up some texture maps to be painted onto.
 Not all maps are required. You only need to create textures for type of painting you want to do. I.E. you only need the color map to paint color.
 For simple use cases this can be conveniently handled automatically by using the built-in texture creator accessed by clicking the plus buttons next to the respective texture fields.
-<img src="imgs/maps.png"></img>
+<img src="https://i.imgur.com/6Vpgk8j.png"></img>
 
 Hotkeys:
 Brush Size - left and right brackets (hold shift to increase amount)
@@ -214,7 +214,7 @@ Undo and Redo are supported for painting
 The brush list loads brushes in the same way and from the same places that the terrain editor used to.
 That is to say, from a folder called "Gizmos" at the root of your project.
 I.e. "Assets/Gizmos/BrushTexture.png"
-<img src="imgs/brushes.png"></img>
+<img src="https://i.imgur.com/8rs2OYr.png"></img>
 
 
 For the paramter map, the color channels are mapped as following:
@@ -235,7 +235,7 @@ I.e. By default the first texture of the atlas is used, and the desired texture 
 For terrain mode, density can be automatically controlled by terrain splat maps if you have them set up.
 e.g. if you have a dirt terrain texture and a grass terrain texture and some areas are painted with dirt, and you don't want grass to show up on the places with the dirt texture,
 you can use the splat maps section under paint mode to select the appropriate layer and remove grass from the dirt layer etc.
-<img src="imgs/splats.png"></img>
+<img src="https://i.imgur.com/r2TnmIA.png"></img>
 
 
 You can also find a utility script called "Obstruction Eraser"
@@ -287,7 +287,7 @@ Cons:
   
  
 Here's a side by side example of the two different modes with a similar setup.
-<img src="imgs/sbs.jpg"></img>
+<img src="https://i.imgur.com/hLXUZKV.jpg"></img>
   
   
 IMORTANT: If you choose the tessellation shader, most of the workflow is the same as the traditional geometry shader, but the instancing and chunk based aspects change dramatically.
@@ -520,22 +520,22 @@ Feel free to contact me with questions or issues.
 <div class="content">
 <pre>
 IMPORTANT: To support URP you MUST go into the GrassFlow/URP folder and extract the .UnityPackage into your project.
-<img src="imgs/urpp.png"></img>
+<img src="https://i.imgur.com/ULtUH2R.png"></img>
 
 IMPORTANT V2: URP support must be enabled. Usually the GrassFlowRenderer component should warn you about this and all you have to do is press the button.
-<img src="imgs/urpw.png"></img>
+<img src="https://i.imgur.com/hqa79qV.png"></img>
 
 To enable URP manually in GrassFlow you'll need to right click the GrassFlowRenderer component to open the context menu and click the enable URP support option.
 Make sure to give Unity a hot sec to reload everything.
-<img src="imgs/context.png"></img>
+<img src="https://i.imgur.com/3HkgYxj.png"></img>
 
 You'll know if GrassFlow is in URP mode when this message shows at the top of the inspector.
-<img src="imgs/urpm.png"></img>
+<img src="https://i.imgur.com/gRnamd2.png"></img>
 
 IMPORTANT v3: You'll need to make sure to use the URP version of the GrassFlow shader for your grass material.
 There's a URP example scene already set up with this ready to go.
 Otherwise simply switch the render pipeline setting on the material.
-<img src="imgs/maturp.png"></img>
+<img src="https://i.imgur.com/6k8pzDs.png"></img>
 
 Also important, the URP version of the shader has an additional material setting for shading additional light sources per-pixel.
 This is everything except the main directional light. So any additional point/spot light etc.
@@ -580,7 +580,6 @@ Email: BoltSoft@gmail.com
 Discord: <a href="https://discord.com/invite/CwvB2PDcqC" target="_blank">discord.com/invite/CwvB2PDcqC</a>
 </pre>
 </div>
-
 
 
 
@@ -658,10 +657,10 @@ function HandleAnchor(e){
 
 
 
-if(window.location.host != "boltmanguy.github.io"){
+if(window.location.host != "bolt-scripts.github.io"){
 	//check if the page is available on the web and use that version if it is
 	var request = new XMLHttpRequest(); 
-	let liveURL = "https://boltmanguy.github.io/GrassFlowDocs/";
+	let liveURL = "https://bolt-scripts.github.io/GrassFlowDocs/";
 	request.open("GET", liveURL);
 	request.onreadystatechange = function() { 
 		if (request.readyState === 4 && request.status === 200) {	
