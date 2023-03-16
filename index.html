@@ -339,6 +339,19 @@ Read the tooltip on MeshLodChunks for more info.
 Using frustum culling removes the performance hit of rendering so many individual chunks, but has its own downsides like:
 Not being able to use different meshes/materials for different LODs.
 Shadows aren't culled properly and may look weird when casting shadows.
+
+BATCHING: There are two batching modes in GrassFlow.
+  -Traditionally, GrassFlow requires a draw call per-chunk because it needs per-chunk data in the shader.
+   This is reduced by a limited batching method that allows some number of visible chunks to be batched together.
+   By default this number is 4, which is a decent value that does not compromise on performance of the shader having to decode the batch.
+   This is mostly a limit for mobile, you could increase the batch limit on PC to reduce draw calls further, 16 would probably be decent.
+   With a decent chunk layout, draw calls shouldn't be much of an issue, but draw calls compound when using multiple grass meshes on the same terrain, for example rendering different types of foliage with different densities on the same terrain.
+   If you wish to change this value, please edit the value at the top of both of these files:
+     -GrassFlow\Shaders\GrassStructsVars.cginc
+	 -GrassFlow\Scripts\CullingZone.cs
+  -When using frustum culling, visible grass will be processed in large batches via compute shader into one large buffer.
+   This buffer is then rendered in one draw call.
+
 </pre></div>
 	
 	<button id="shadows" type="button" class="sub collapsible">B. Shadows</button>
